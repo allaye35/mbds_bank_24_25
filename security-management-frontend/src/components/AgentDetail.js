@@ -25,6 +25,11 @@ const AgentDetail = () => {
           <p><strong>Nom:</strong> {agent.nom}</p>
           <p><strong>Prénom:</strong> {agent.prenom}</p>
           <p><strong>Email:</strong> {agent.email}</p>
+          <p><strong>Téléphone:</strong> {agent.telephone}</p>
+          <p><strong>Adresse:</strong> {agent.adresse}</p>
+          <p><strong>Date de Naissance:</strong> {agent.dateNaissance}</p>
+          <p><strong>Zone de Travail:</strong> {agent.zoneDeTravail}</p>
+          <p><strong>Statut:</strong> {agent.statut}</p>
         </div>
       ) : (
         <p>Chargement...</p>

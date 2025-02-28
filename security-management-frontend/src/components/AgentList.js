@@ -7,7 +7,6 @@ const AgentList = () => {
   const [agents, setAgents] = useState([]);
 
   useEffect(() => {
-    // Récupérer la liste des agents
     AgentService.getAllAgents()
       .then((response) => {
         setAgents(response.data);
@@ -18,12 +17,9 @@ const AgentList = () => {
   }, []);
 
   const handleDelete = (id) => {
-    console.log("ID à supprimer:", id); // Vérifie l’ID dans la console
-    // Demander confirmation avant de supprimer
     if (window.confirm("Êtes-vous sûr de vouloir supprimer cet agent ?")) {
       AgentService.deleteAgent(id)
         .then(() => {
-          // Rafraîchir la liste après suppression
           setAgents(agents.filter(agent => agent.id !== id));
         })
         .catch((error) => {
@@ -35,12 +31,16 @@ const AgentList = () => {
   return (
     <div>
       <h2>Liste des Agents</h2>
+      <Link to="/agents/create">Créer un nouvel agent</Link>
       <table>
         <thead>
           <tr>
             <th>Nom</th>
             <th>Prénom</th>
             <th>Email</th>
+            <th>Téléphone</th>
+            <th>Adresse</th>
+            <th>Statut</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -50,9 +50,13 @@ const AgentList = () => {
               <td>{agent.nom}</td>
               <td>{agent.prenom}</td>
               <td>{agent.email}</td>
+              <td>{agent.telephone}</td>
+              <td>{agent.adresse}</td>
+              <td>{agent.statut}</td>
               <td>
                 <Link to={`/agents/edit/${agent.id}`}>Modifier</Link>
                 <button onClick={() => handleDelete(agent.id)}>Supprimer</button>
+                <Link to={`/agents/${agent.id}`}>Voir Détails</Link>
               </td>
             </tr>
           ))}
