@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { FaUserShield, FaTasks, FaCalendarAlt, FaBuilding } from "react-icons/fa"; // Import des icônes
 import "../styles/Home.css"; 
 
+      
+
 const Home = () => {
   return (
     <div className="home-container">

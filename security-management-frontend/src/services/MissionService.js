@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/missions";
+const API_URL = "http://localhost:8080/api/missions"; // Vérifiez que votre backend tourne bien
 
 const getAllMissions = () => axios.get(API_URL);
 const getMissionById = (id) => axios.get(`${API_URL}/${id}`);

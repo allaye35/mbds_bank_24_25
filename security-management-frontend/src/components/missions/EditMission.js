@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import MissionService from "../services/MissionService"; // Service de gestion des missions
+import MissionService from "../../services/MissionService";
 
 const EditMission = () => {
   const { id } = useParams();

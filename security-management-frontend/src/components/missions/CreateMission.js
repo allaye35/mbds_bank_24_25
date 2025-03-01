@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MissionService from "../services/MissionService"; // Assurez-vous d'avoir ce service configuré
-
+import MissionService from "../../services/MissionService";
 const CreateMission = () => {
   const [mission, setMission] = useState({
     titre: "",
