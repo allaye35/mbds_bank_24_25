@@ -1,10 +1,9 @@
-// src/components/EditAgent.js
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import AgentService from "../services/AgentService";
+// src/components/CreateAgent.js
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import AgentService from "../../services/AgentService";
 
-const EditAgent = () => {
-  const { id } = useParams();
+const CreateAgent = () => {
   const [agent, setAgent] = useState({
     nom: "",
     prenom: "",
@@ -17,17 +16,6 @@ const EditAgent = () => {
   });
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Récupérer les détails de l'agent en fonction de l'ID
-    AgentService.getAgentById(id)
-      .then((response) => {
-        setAgent(response.data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des détails de l'agent", error);
-      });
-  }, [id]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAgent({ ...agent, [name]: value });
@@ -35,19 +23,19 @@ const EditAgent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Soumettre les données mises à jour
-    AgentService.updateAgent(id, agent)
+    // Soumettre les données de l'agent
+    AgentService.createAgent(agent)
       .then(() => {
-        navigate("/agents"); // Rediriger vers la liste des agents après modification
+        navigate("/agents"); // Redirige vers la liste des agents après création
       })
       .catch((error) => {
-        console.error("Erreur lors de la mise à jour de l'agent", error);
+        console.error("Erreur lors de la création de l'agent", error);
       });
   };
 
   return (
     <div>
-      <h2>Modifier l'Agent</h2>
+      <h2>Créer un Nouvel Agent</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Nom:
@@ -139,10 +127,10 @@ const EditAgent = () => {
           </select>
         </label>
         <br />
-        <button type="submit">Mettre à jour</button>
+        <button type="submit">Créer</button>
       </form>
     </div>
   );
 };
 
-export default EditAgent;
+export default CreateAgent;

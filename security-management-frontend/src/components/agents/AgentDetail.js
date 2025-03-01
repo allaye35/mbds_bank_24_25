@@ -1,7 +1,7 @@
 // src/components/AgentDetail.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AgentService from "../services/AgentService";
+import AgentService from "../../services/AgentService";
 
 const AgentDetail = () => {
   const { id } = useParams();

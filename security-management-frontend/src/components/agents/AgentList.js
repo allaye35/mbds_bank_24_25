@@ -1,7 +1,7 @@
 // src/components/AgentList.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AgentService from "../services/AgentService";
+import AgentService from "../../services/AgentService";
 
 const AgentList = () => {
   const [agents, setAgents] = useState([]);
