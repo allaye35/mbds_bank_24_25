@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import MissionService from "../../services/MissionService";    
+import MissionService from "../../services/MissionService";
+import { useNavigate } from "react-router-dom";
 
 const MissionList = () => {
   const [missions, setMissions] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Récupérer la liste des missions
     MissionService.getAllMissions()
       .then((response) => {
         setMissions(response.data);
@@ -18,6 +19,7 @@ const MissionList = () => {
   return (
     <div>
       <h2>Liste des Missions</h2>
+      <button onClick={() => navigate("/missions/create")}>Créer une Mission</button>
       <table>
         <thead>
           <tr>
@@ -34,13 +36,13 @@ const MissionList = () => {
               <td>{mission.description}</td>
               <td>{mission.statutMission}</td>
               <td>
-                <button>
-                  <a href={`/missions/edit/${mission.id}`}>Modifier</a>
-                </button>
+                <button onClick={() => navigate(`/missions/edit/${mission.id}`)}>Modifier</button>
                 <button
                   onClick={() => {
                     if (window.confirm("Voulez-vous vraiment supprimer cette mission ?")) {
-                      MissionService.deleteMission(mission.id);
+                      MissionService.deleteMission(mission.id).then(() => {
+                        setMissions(missions.filter((m) => m.id !== mission.id));
+                      });
                     }
                   }}
                 >

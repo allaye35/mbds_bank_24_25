@@ -1,18 +1,30 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import AgentRoutes from "./AgentRoutes";
-import MissionRoutes from "./MissionRoutes";
+// import React from "react";
+// import { Routes, Route } from "react-router-dom";
+// import Home from "../pages/Home";
+// import AgentRoutes from "./AgentRoutes";
+// import MissionRoutes from "./MissionRoutes";
+// import PlanningRoutes from "./PlanningRoutes";
+// import SiteRoutes from "./SiteRoutes";
+// import EntrepriseRoutes from "./EntrepriseRoutes";
+// import GeolocalisationRoutes from "./GeolocalisationRoutes";
 
-const AppRoutes = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      {/* Importation des routes séparées */}
-      {AgentRoutes()}
-      {MissionRoutes()}
-    </Routes>
-  );
-};
+// const AppRoutes = () => {
+//   return (
+//     <Routes>
+//       {/* Page d'accueil */}
+//       <Route path="/" element={<Home />} />
 
-export default AppRoutes;
+//       {/* On insère la liste de <Route> renvoyée par nos sous-routes */}
+//       <>
+//         {AgentRoutes()}
+//         {MissionRoutes()}
+//         {PlanningRoutes()}
+//         {SiteRoutes()}
+//         {EntrepriseRoutes()}
+//         {GeolocalisationRoutes()}
+//       </>
+//     </Routes>
+//   );
+// };
+
+// export default AppRoutes;
