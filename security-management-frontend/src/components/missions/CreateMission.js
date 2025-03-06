@@ -2,11 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MissionService from "../../services/MissionService";
 import EntrepriseService from "../../services/EntrepriseService";
-import SiteService from "../../services/SiteService";
-import PlanningService from "../../services/PlanningService";
-import AgentService from "../../services/AgentService";
-import RapportService from "../../services/RapportService";
-import GeolocalisationService from "../../services/GeolocalisationService";
 
 const CreateMission = () => {
   const [mission, setMission] = useState({
@@ -14,184 +9,100 @@ const CreateMission = () => {
     description: "",
     dateDebut: "",
     dateFin: "",
-    statutMission: "EN_COURS",
-    siteId: "",
-    planningId: "",
-    entrepriseId: "",
-    geolocalisationId: "",
-    agents: [],
-    rapports: []
+    statutMission: "PLANIFIEE", // ✅ Correction ici
+    entrepriseId: "", // Initialisé vide
   });
 
   const [entreprises, setEntreprises] = useState([]);
-  const [sites, setSites] = useState([]);
-  const [plannings, setPlannings] = useState([]);
-  const [geolocalisations, setGeolocalisations] = useState([]);
-  const [agents, setAgents] = useState([]);
-  const [rapports, setRapports] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchEntreprises = async () => {
       try {
         const entreprisesData = await EntrepriseService.getAllEntreprises();
         setEntreprises(entreprisesData.data);
-
-        const sitesData = await SiteService.getAllSites();
-        setSites(sitesData.data);
-
-        const planningsData = await PlanningService.getAllPlannings();
-        setPlannings(planningsData.data);
-
-        const geolocalisationsData = await GeolocalisationService.getAllGeolocalisations();
-        setGeolocalisations(geolocalisationsData.data);
-
-        const agentsData = await AgentService.getAllAgents();
-        setAgents(agentsData.data);
-
-        const rapportsData = await RapportService.getAllRapports();
-        setRapports(rapportsData.data);
-
       } catch (error) {
-        console.error("❌ Erreur lors du chargement des données :", error);
+        console.error("❌ Erreur lors du chargement des entreprises :", error);
       }
     };
-
-    fetchData();
+    fetchEntreprises();
   }, []);
 
-  // Gère les champs simples (titre, description, etc.)
   const handleChange = (e) => {
     const { name, value } = e.target;
     setMission({ ...mission, [name]: value });
   };
 
-  // Gère les champs de sélection multiple (agents, rapports)
-  const handleMultiSelectChange = (e, field) => {
-    const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
-    setMission({ ...mission, [field]: selectedOptions });
-  };
-
-  // Construit l'objet final et envoie la requête au backend
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage("");
 
-    // Construire l'objet payload attendu par le backend
+    if (!mission.titre || !mission.description || !mission.dateDebut || !mission.dateFin || !mission.entrepriseId) {
+      setErrorMessage("⚠️ Tous les champs sont obligatoires !");
+      setIsLoading(false);
+      return;
+    }
+
+    // Vérification du statutMission avant d'envoyer au backend
+    if (!["PLANIFIEE", "EN_COURS", "TERMINEE", "ANNULEE"].includes(mission.statutMission)) {
+      setErrorMessage("⚠️ Statut de mission invalide !");
+      setIsLoading(false);
+      return;
+    }
+
     const payload = {
       titre: mission.titre,
       description: mission.description,
       dateDebut: mission.dateDebut,
       dateFin: mission.dateFin,
       statutMission: mission.statutMission,
-      site: mission.siteId ? { id: mission.siteId } : null,
-      planning: mission.planningId ? { id: mission.planningId } : null,
-      entreprise: mission.entrepriseId ? { id: mission.entrepriseId } : null,
-      geolocalisationGPS: mission.geolocalisationId ? { id: mission.geolocalisationId } : null,
-      agents: mission.agents.map((agentId) => ({ id: agentId })),
-      rapports: mission.rapports.map((rapportId) => ({ id: rapportId })),
+      entreprise: { id: Number(mission.entrepriseId) }, // 🔥 Convertir en Number
     };
 
-    console.log("Payload envoyé :", payload);
+    console.log("📤 Payload envoyé :", JSON.stringify(payload, null, 2));
 
-    MissionService.createMission(payload)
-      .then(() => {
-        alert("✅ Mission créée avec succès !");
-        navigate("/missions");
-      })
-      .catch((error) => {
-        console.error("❌ Erreur lors de la création de la mission :", error);
-        alert("⚠️ Erreur lors de la création de la mission");
-      });
+    try {
+      await MissionService.createMission(payload);
+      alert("✅ Mission créée avec succès !");
+      navigate("/missions");
+    } catch (error) {
+      console.error("❌ Erreur lors de la création de la mission :", error.response?.data || error.message);
+      setErrorMessage("⚠️ " + (error.response?.data?.message || "Erreur inconnue"));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <div>
       <h2>Créer une Mission</h2>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
         <label>Titre:</label>
-        <input
-          type="text"
-          name="titre"
-          value={mission.titre}
-          onChange={handleChange}
-          required
-        />
+        <input type="text" name="titre" value={mission.titre} onChange={handleChange} required />
 
         <label>Description:</label>
-        <textarea
-          name="description"
-          value={mission.description}
-          onChange={handleChange}
-          required
-        />
+        <textarea name="description" value={mission.description} onChange={handleChange} required />
 
         <label>Date de début:</label>
-        <input
-          type="date"
-          name="dateDebut"
-          value={mission.dateDebut}
-          onChange={handleChange}
-          required
-        />
+        <input type="date" name="dateDebut" value={mission.dateDebut} onChange={handleChange} required />
 
         <label>Date de fin:</label>
-        <input
-          type="date"
-          name="dateFin"
-          value={mission.dateFin}
-          onChange={handleChange}
-          required
-        />
+        <input type="date" name="dateFin" value={mission.dateFin} onChange={handleChange} required />
 
         <label>Statut:</label>
-        <select
-          name="statutMission"
-          value={mission.statutMission}
-          onChange={handleChange}
-        >
+        <select name="statutMission" value={mission.statutMission} onChange={handleChange} required>
+          <option value="PLANIFIEE">Planifiée</option>  {/* ✅ Correction ici */}
           <option value="EN_COURS">En Cours</option>
           <option value="TERMINEE">Terminée</option>
-          <option value="EN_ATTENTE">En Attente</option>
-        </select>
-
-        <label>Site:</label>
-        <select
-          name="siteId"
-          value={mission.siteId}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Sélectionner un site</option>
-          {sites.map((site) => (
-            <option key={site.id} value={site.id}>
-              {site.nom}
-            </option>
-          ))}
-        </select>
-
-        <label>Planning:</label>
-        <select
-          name="planningId"
-          value={mission.planningId}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Sélectionner un planning</option>
-          {plannings.map((planning) => (
-            <option key={planning.id} value={planning.id}>
-              {planning.date}
-            </option>
-          ))}
+          <option value="ANNULEE">Annulée</option>
         </select>
 
         <label>Entreprise:</label>
-        <select
-          name="entrepriseId"
-          value={mission.entrepriseId}
-          onChange={handleChange}
-          required
-        >
+        <select name="entrepriseId" value={mission.entrepriseId} onChange={handleChange} required>
           <option value="">Sélectionner une entreprise</option>
           {entreprises.map((entreprise) => (
             <option key={entreprise.id} value={entreprise.id}>
@@ -200,55 +111,9 @@ const CreateMission = () => {
           ))}
         </select>
 
-        <label>Géolocalisation:</label>
-        <select
-          name="geolocalisationId"
-          value={mission.geolocalisationId}
-          onChange={handleChange}
-        >
-          <option value="">Sélectionner une localisation</option>
-          {geolocalisations.map((geo) => (
-            <option key={geo.id} value={geo.id}>
-              {geo.position.latitude}, {geo.position.longitude}
-            </option>
-          ))}
-        </select>
-
-        <label>Agents assignés:</label>
-        <select
-          name="agents"
-          multiple
-          value={mission.agents}
-          onChange={(e) => handleMultiSelectChange(e, "agents")}
-        >
-          {agents.length === 0 && (
-            <option disabled>Aucun agent disponible</option>
-          )}
-          {agents.map((agent) => (
-            <option key={agent.id} value={agent.id}>
-              {agent.nom} {agent.prenom}
-            </option>
-          ))}
-        </select>
-
-        <label>Rapports associés:</label>
-        <select
-          name="rapports"
-          multiple
-          value={mission.rapports}
-          onChange={(e) => handleMultiSelectChange(e, "rapports")}
-        >
-          {rapports.length === 0 && (
-            <option disabled>Aucun rapport disponible</option>
-          )}
-          {rapports.map((rapport) => (
-            <option key={rapport.id} value={rapport.id}>
-              {rapport.description}
-            </option>
-          ))}
-        </select>
-
-        <button type="submit">Créer Mission</button>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? "Création..." : "Créer Mission"}
+        </button>
       </form>
     </div>
   );
