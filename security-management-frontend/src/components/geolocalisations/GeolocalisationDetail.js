@@ -8,7 +8,7 @@ const GeolocalisationDetail = () => {
   const [geolocalisation, setGeolocalisation] = useState(null);
 
   useEffect(() => {
-    GeolocalisationService.getById(id)
+    GeolocalisationService.getGeolocalisationById(id)
       .then(response => setGeolocalisation(response.data))
       .catch(error => console.error("Erreur de chargement", error));
   }, [id]);

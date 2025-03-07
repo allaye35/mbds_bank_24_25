@@ -10,7 +10,7 @@ const GeolocalisationList = () => {
   }, []);
 
   const fetchGeolocalisations = () => {
-    GeolocalisationService.getAll()
+    GeolocalisationService.getAllGeolocalisations()
       .then(response => setGeolocalisations(response.data))
       .catch(error => console.error("Erreur de chargement", error));
   };
