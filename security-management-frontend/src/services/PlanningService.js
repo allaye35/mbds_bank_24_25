@@ -2,18 +2,34 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/plannings";
 
-const getAllPlannings = () => axios.get(API_URL);
-const getPlanningById = (id) => axios.get(`${API_URL}/${id}`);
-const createPlanning = (planning) => axios.post(API_URL, planning);
-const updatePlanning = (id, planning) => axios.put(`${API_URL}/${id}`, planning);
-const deletePlanning = (id) => axios.delete(`${API_URL}/${id}`);
+class PlanningService {
+  getAllPlannings() {
+    return axios.get(API_URL);
+  }
 
-const PlanningService = {
-  getAllPlannings,
-  getPlanningById,
-  createPlanning,
-  updatePlanning,
-  deletePlanning,
-};
+  getPlanningById(id) {
+    return axios.get(`${API_URL}/${id}`);
+  }
 
-export default PlanningService;
+  createPlanning(planning) {
+    return axios.post(API_URL, planning);
+  }
+
+  updatePlanning(id, planning) {
+    return axios.put(`${API_URL}/${id}`, planning);
+  }
+
+  deletePlanning(id) {
+    return axios.delete(`${API_URL}/${id}`);
+  }
+
+  addMissionToPlanning(planningId, missionId) {
+    return axios.post(`${API_URL}/${planningId}/missions/${missionId}`);
+  }
+
+  removeMissionFromPlanning(planningId, missionId) {
+    return axios.delete(`${API_URL}/${planningId}/missions/${missionId}`);
+  }
+}
+
+export default new PlanningService();
