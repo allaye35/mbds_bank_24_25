@@ -19,7 +19,9 @@ const EntrepriseList = () => {
         }
         setEntreprises(data);
       })
-      .catch((error) => console.error("Erreur de chargement des entreprises :", error));
+      .catch((error) =>
+        console.error("Erreur de chargement des entreprises :", error)
+      );
   };
 
   const deleteEntreprise = (id) => {
@@ -40,12 +42,7 @@ const EntrepriseList = () => {
       <table>
         <thead>
           <tr>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Téléphone</th>
-            <th>Email</th>
-            <th>Missions</th> {/* Colonne pour afficher les missions */}
-            <th>Actions</th>
+            <th>Nom</th><th>Adresse</th><th>Téléphone</th><th>Email</th><th>Missions</th><th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -56,8 +53,6 @@ const EntrepriseList = () => {
                 <td>{entreprise.adresse}</td>
                 <td>{entreprise.telephone}</td>
                 <td>{entreprise.email}</td>
-
-                {/* Affichage de la liste des missions si elle existe */}
                 <td>
                   {entreprise.missions && entreprise.missions.length > 0 ? (
                     <ul>
@@ -71,11 +66,9 @@ const EntrepriseList = () => {
                     <span>Aucune mission</span>
                   )}
                 </td>
-
                 <td>
-                  <Link to={`/entreprises/${entreprise.id}`}>Détails</Link>{" "}
-                  | <Link to={`/entreprises/edit/${entreprise.id}`}>Modifier</Link>{" "}
-                  |{" "}
+                  <Link to={`/entreprises/${entreprise.id}`}>Détails</Link> |{" "}
+                  <Link to={`/entreprises/edit/${entreprise.id}`}>Modifier</Link> |{" "}
                   <button onClick={() => deleteEntreprise(entreprise.id)}>
                     Supprimer
                   </button>

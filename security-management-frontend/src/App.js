@@ -44,7 +44,7 @@ import EditRapport from "./components/rapports/EditRapport";
 import RapportDetail from "./components/rapports/RapportDetail";
 import DeleteRapport from "./components/rapports/DeleteRapport";
 import CreateMission from "./components/missions/CreateMission";
-
+import AssignMissionRelations from "./components/missions/AssignMissionRelations";
 
 import Home from "./pages/Home";
 
@@ -55,7 +55,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home />} />
 
-
+        {/* Routes Rapports */}
       <Route path="/" element={<Home />} />
         <Route path="/rapports" element={<RapportList />} />
         <Route path="/rapports/create" element={<CreateRapport />} />
@@ -90,7 +90,7 @@ function App() {
         <Route path="/missions/edit/:id" element={<EditMission />} />
         <Route path="/missions/delete/:id" element={<DeleteMission />} />
         <Route path="/missions/:id" element={<MissionDetail />} />
-
+        <Route path="/missions/:id/assign" element={<AssignMissionRelations />} />
         {/* Routes Plannings */}
         <Route path="/plannings" element={<PlanningList />} />
         <Route path="/plannings/create" element={<CreatePlanning />} />
