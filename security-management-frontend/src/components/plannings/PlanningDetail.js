@@ -19,6 +19,18 @@ const PlanningDetail = () => {
       <h2>Détails du Planning</h2>
       <p><strong>ID:</strong> {planning.id}</p>
       <p><strong>Date:</strong> {planning.date}</p>
+
+      <h3>Missions associées</h3>
+      {planning.missions && planning.missions.length > 0 ? (
+        <ul>
+          {planning.missions.map(mission => (
+            <li key={mission.id}>{mission.description || `Mission ID: ${mission.id}`}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>Aucune mission associée à ce planning.</p>
+      )}
+
       <Link to="/plannings">Retour à la liste</Link>
     </div>
   );
