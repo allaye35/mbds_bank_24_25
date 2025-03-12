@@ -1,39 +1,48 @@
-// src/components/AgentDetail.js
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
+import { useParams, Link } from "react-router-dom";
 import AgentService from "../../services/AgentService";
 
 const AgentDetail = () => {
   const { id } = useParams();
   const [agent, setAgent] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchAgent = useCallback(() => {
+    AgentService.getAgentById(id)
+      .then((response) => setAgent(response.data))
+      .catch(() => setError("Impossible de charger l'agent."));
+  }, [id]); // ✅ Ajoute `id` dans les dépendances de useCallback
 
   useEffect(() => {
-    AgentService.getAgentById(id)
-      .then((response) => {
-        setAgent(response.data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des détails de l'agent", error);
-      });
-  }, [id]);
+    fetchAgent();
+  }, [fetchAgent]); // ✅ Ajoute `fetchAgent` dans les dépendances
+
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (!agent) return <p>Chargement...</p>;
 
   return (
     <div>
-      <h2>Détails de l'Agent</h2>
-      {agent ? (
-        <div>
-          <p><strong>Nom:</strong> {agent.nom}</p>
-          <p><strong>Prénom:</strong> {agent.prenom}</p>
-          <p><strong>Email:</strong> {agent.email}</p>
-          <p><strong>Téléphone:</strong> {agent.telephone}</p>
-          <p><strong>Adresse:</strong> {agent.adresse}</p>
-          <p><strong>Date de Naissance:</strong> {agent.dateNaissance}</p>
-          <p><strong>Zone de Travail:</strong> {agent.zoneDeTravail}</p>
-          <p><strong>Statut:</strong> {agent.statut}</p>
-        </div>
+      <h2>👮 Profil de {agent.nom} {agent.prenom}</h2>
+      <p><strong>Email :</strong> {agent.email}</p>
+      <p><strong>Téléphone :</strong> {agent.telephone || "N/A"}</p>
+      <p><strong>Zone de Travail :</strong> {agent.zoneDeTravail || "Non spécifiée"}</p>
+      <p><strong>Statut :</strong> {agent.statut || "Inconnu"}</p>
+
+      <h3>📋 Missions assignées</h3>
+      {agent.missions && agent.missions.length > 0 ? (
+        <ul>
+          {agent.missions.map((mission) => (
+            <li key={mission.id}>
+              <strong>{mission.titre}</strong> ({mission.dateDebut} - {mission.dateFin})
+              <Link to={`/missions/${mission.id}`}> 📄 Voir Détails</Link>
+            </li>
+          ))}
+        </ul>
       ) : (
-        <p>Chargement...</p>
+        <p>🚫 Aucune mission assignée</p>
       )}
+
+      <Link to="/agents">⬅ Retour aux agents</Link>
     </div>
   );
 };

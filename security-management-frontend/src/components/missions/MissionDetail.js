@@ -1,41 +1,46 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import MissionService from "../../services/MissionService"; // Assurez-vous que le chemin est correct
+import { useParams, Link } from "react-router-dom";
+import MissionService from "../../services/MissionService";
 
 const MissionDetail = () => {
-  const { id } = useParams(); // Récupère l'ID depuis l'URL
-  const navigate = useNavigate();
+  const { id } = useParams();
   const [mission, setMission] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    MissionService.getMissionById(id)
-      .then((response) => {
-        setMission(response.data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la récupération des détails de la mission", error);
-      });
+    fetchMission();
   }, [id]);
 
-  if (!mission) {
-    return <h3>Chargement des détails de la mission...</h3>;
-  }
+  const fetchMission = () => {
+    MissionService.getMissionById(id)
+      .then((response) => setMission(response.data))
+      .catch(() => setError("Impossible de charger la mission."));
+  };
+
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
+  if (!mission) return <p>Chargement...</p>;
 
   return (
     <div>
-      <h2>Détails de la Mission</h2>
+      <h2>📄 Détails de la Mission {mission.id}</h2>
       <p><strong>Titre :</strong> {mission.titre}</p>
       <p><strong>Description :</strong> {mission.description}</p>
-      <p><strong>Date de début :</strong> {mission.dateDebut}</p>
-      <p><strong>Date de fin :</strong> {mission.dateFin}</p>
+      <p><strong>📅 Horaire :</strong> {mission.dateDebut} - {mission.dateFin}</p>
       <p><strong>Statut :</strong> {mission.statutMission}</p>
-      <p><strong>Site :</strong> {mission.siteId}</p>
-      <p><strong>Planning :</strong> {mission.planningId}</p>
-      <p><strong>Entreprise :</strong> {mission.entrepriseId}</p>
 
-      <button onClick={() => navigate("/missions")} style={{ marginTop: "10px" }}>
-        Retour à la liste
-      </button>
+      <h3>👮 Agents assignés</h3>
+      {mission.agents.length > 0 ? (
+        <ul>
+          {mission.agents.map((agent) => (
+            <li key={agent.id}>
+              {agent.nom} {agent.prenom} - 📧 {agent.email}
+              <Link to={`/agents/${agent.id}`}>👀 Voir Profil</Link>
+            </li>
+          ))}
+        </ul>
+      ) : <p>🚫 Aucun agent affecté</p>}
+
+      <Link to="/missions">⬅ Retour aux missions</Link>
     </div>
   );
 };

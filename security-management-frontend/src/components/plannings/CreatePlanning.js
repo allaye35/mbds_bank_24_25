@@ -3,27 +3,62 @@ import { useNavigate } from "react-router-dom";
 import PlanningService from "../../services/PlanningService";
 
 const CreatePlanning = () => {
-  const [planning, setPlanning] = useState({ date: "" });
   const navigate = useNavigate();
 
+  // Définition du planning avec `dateCreation`
+  const [planning, setPlanning] = useState({
+    dateCreation: new Date().toISOString().split("T")[0] + "T00:00:00", // Ajout de l'heure 00:00:00
+  });
+
+  // État pour afficher les erreurs
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Gestion des changements dans le formulaire
   const handleChange = (e) => {
-    setPlanning({ ...planning, [e.target.name]: e.target.value });
+    setPlanning({ ...planning, [e.target.name]: e.target.value + "T00:00:00" }); // Ajout de l'heure au format
   };
 
-  const handleSubmit = (e) => {
+  // Soumission du formulaire
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    PlanningService.createPlanning(planning)
-      .then(() => navigate("/plannings"))
-      .catch(error => console.error("Erreur de création", error));
+
+    if (!planning.dateCreation) {
+      setErrorMessage("Veuillez sélectionner une date de création.");
+      return;
+    }
+
+    try {
+      await PlanningService.createPlanning(planning);
+      alert("Planning créé avec succès !");
+      navigate("/plannings"); // Redirection vers la liste des plannings
+    } catch (error) {
+      console.error("Erreur lors de la création du planning :", error.response);
+      if (error.response) {
+        setErrorMessage(`Erreur: ${error.response.data.message || "Vérifiez les données envoyées."}`);
+      } else {
+        setErrorMessage("Erreur inconnue, veuillez réessayer.");
+      }
+    }
   };
 
   return (
     <div>
-      <h2>Créer un Planning</h2>
+      <h2>Créer un Nouveau Planning</h2>
+
+      {/* Affichage des erreurs */}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
       <form onSubmit={handleSubmit}>
-        <label>Date:</label>
-        <input type="date" name="date" value={planning.date} onChange={handleChange} required />
-        <button type="submit">Créer</button>
+        <label>Date de Création :</label>
+        <input
+          type="date"
+          name="dateCreation"
+          value={planning.dateCreation.split("T")[0]} // Affichage de la date sans heure
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit">Créer le Planning</button>
       </form>
     </div>
   );

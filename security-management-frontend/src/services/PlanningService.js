@@ -30,6 +30,48 @@ class PlanningService {
   removeMissionFromPlanning(planningId, missionId) {
     return axios.delete(`${API_URL}/${planningId}/missions/${missionId}`);
   }
+
+  async getPlanningsByAgent(agentId) {
+    if (!agentId) throw new Error("L'ID de l'agent est requis.");
+    
+    try {
+      const response = await axios.get(`${API_URL}/agents/${agentId}`);
+      return response.data;
+    } catch (error) {
+      console.error("❌ Erreur lors du filtrage par agent:", error);
+      throw error;
+    }
+  }
+
+  async getPlanningsByMission(missionId) {
+    if (!missionId) throw new Error("L'ID de la mission est requis.");
+    
+    try {
+      const response = await axios.get(`${API_URL}/missions/${missionId}`);
+      return response.data;
+    } catch (error) {
+      console.error("❌ Erreur lors du filtrage par mission:", error);
+      throw error;
+    }
+  }
+
+  async getPlanningsByDateRange(dateDebut, dateFin) {
+    if (!dateDebut || !dateFin) throw new Error("Les dates de début et de fin sont requises.");
+    
+    try {
+      const formattedDateDebut = `${dateDebut}T00:00:00`;
+      const formattedDateFin = `${dateFin}T23:59:59`;
+
+      const response = await axios.get(`${API_URL}/rechercher`, {
+        params: { dateDebut: formattedDateDebut, dateFin: formattedDateFin },
+      });
+
+      return response.data;
+    } catch (error) {
+      console.error("❌ Erreur lors du filtrage par période:", error);
+      throw error;
+    }
+  }
 }
 
 export default new PlanningService();
