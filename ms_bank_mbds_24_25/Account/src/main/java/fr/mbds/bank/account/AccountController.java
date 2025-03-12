@@ -25,7 +25,7 @@ class AccountController {
 
 
     @GetMapping("/account/{id}")
-    public Account getAccount(@PathVariable Long id) {
+    public Account getAccount(@PathVariable String id) {
         return accountRepository.findById(String.valueOf(id)).orElse(null);
 
     }
