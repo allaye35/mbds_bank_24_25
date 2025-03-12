@@ -1,7 +1,7 @@
 package fr.mbds.bank.account;
 
-import com.boulevardsecurity.account.Customer;
-import com.boulevardsecurity.account.Enums.CurrencyType;
+
+
 import jakarta.persistence.*;
 import lombok.*;
 

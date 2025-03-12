@@ -18,7 +18,7 @@ class AccountController {
         this.accountRepository = accountRepository;
     }
 
-    @GetMapping"/accounts")
+    @GetMapping("/accounts")
     public List<Account> getAccounts() {
         return accountRepository.findAll();
     }
@@ -26,7 +26,7 @@ class AccountController {
 
     @GetMapping("/account/{id}")
     public Account getAccount(@PathVariable Long id) {
-        return accountRepository.findById(id).orElse(null);
+        return accountRepository.findById(String.valueOf(id)).orElse(null);
 
     }
 

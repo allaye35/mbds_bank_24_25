@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46fb3f65-2cb1-4ecf-874b-8e5a08d8adb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/CurrencyType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ms_bank_mbds_24_25.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SecurityManagementApp" beforeDir="false" afterPath="$PROJECT_DIR$/../SecurityManagementApp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/components/agents/AgentDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/components/agents/AgentDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/components/missions/MissionDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/components/missions/MissionDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/CreatePlanning.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/CreatePlanning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/PlanningDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/PlanningDetail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/PlanningList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/components/plannings/PlanningList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../security-management-frontend/src/services/PlanningService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../security-management-frontend/src/services/PlanningService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,9 +62,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build Account.executor": "Run",
     "Gradle.Build customer.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.AccountApplication.executor": "Run",
     "Spring Boot.CustomerApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -100,7 +83,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.CustomerApplication">
+  <component name="RunManager" selected="Spring Boot.AccountApplication">
     <configuration name="AccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Account.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="fr.mbds.bank.account.AccountApplication" />
@@ -133,7 +116,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741775724944</updated>
       <workItem from="1741775725164" duration="1831000" />
-      <workItem from="1741777584748" duration="3372000" />
+      <workItem from="1741777584748" duration="4315000" />
     </task>
     <servers />
   </component>
