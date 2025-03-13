@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Account.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Account.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/ms_bank_mbds_24_25.iml" filepath="$PROJECT_DIR$/ms_bank_mbds_24_25.iml" />
     </modules>
   </component>
