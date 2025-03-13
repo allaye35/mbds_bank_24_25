@@ -20,26 +20,18 @@ public class AccountApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(AccountRepository accountRepository) {
+	CommandLineRunner commandLineRunner(AccountRepository accountRepository, CustomerClient customerClient) {
 		return args -> {
-			List<Account> accountList = List.of(
-					Account.builder()
-							.id(UUID.randomUUID().toString())
-							.balance(100D)
-							.currencyType(CurrencyType.EUR)
-							.dateCreated(LocalDate.now())
-							.customerId(1L)
-							.build(),
-					Account.builder()
-							.id(UUID.randomUUID().toString())
-							.balance(200D)
-							.currencyType(CurrencyType.USD)
-							.dateCreated(LocalDate.now())
-							.customerId(2L)
-							.build()
-			);
-			accountRepository.saveAll(accountList);
+			customerClient.getCustomers().forEach(customer -> {
+				Account accountInstance = Account.builder()
+						.customerId(customer.getId())
+						.id(UUID.randomUUID().toString())
+						.balance(Math.random()*1000)
+						.dateCreated(LocalDate.now())
+						.currencyType(CurrencyType.EUR)
+						.build();
+				accountRepository.save(accountInstance);
+			});
 		};
 	}
-
 }

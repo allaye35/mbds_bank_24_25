@@ -1,5 +1,6 @@
-package fr.mbds.bank.customer;
+package fr.mbds.bank.customer.repository;
 
+import fr.mbds.bank.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

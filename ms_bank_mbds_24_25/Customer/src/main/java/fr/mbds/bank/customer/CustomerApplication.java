@@ -1,5 +1,6 @@
 package fr.mbds.bank.customer;
 
+import fr.mbds.bank.customer.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +17,7 @@ public class CustomerApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(CustomerRepository  customerRepository) {
+	CommandLineRunner commandLineRunner(CustomerRepository customerRepository) {
 
 		return args -> {
 			List<Customer> customersList = List.of(

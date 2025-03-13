@@ -5,15 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46fb3f65-2cb1-4ecf-874b-8e5a08d8adb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/Account.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/CustomerClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/dto/CustomerDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/mapper/CustomerMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/service/impl/CustomerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SecurityManagementApp" beforeDir="false" afterPath="$PROJECT_DIR$/../SecurityManagementApp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Account/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Account/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Account/src/main/java/fr/mbds/bank/account/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/src/main/java/fr/mbds/bank/customer/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/customer/src/main/java/fr/mbds/bank/customer/CustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +92,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.CustomerApplication">
+  <component name="RunManager" selected="Spring Boot.AccountApplication">
     <configuration name="AccountApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Account.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="fr.mbds.bank.account.AccountApplication" />
@@ -125,7 +128,7 @@
       <workItem from="1741777584748" duration="5657000" />
       <workItem from="1741870999932" duration="82000" />
       <workItem from="1741871213562" duration="150000" />
-      <workItem from="1741871389753" duration="5928000" />
+      <workItem from="1741871389753" duration="9356000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,6 @@
 package fr.mbds.bank.customer;
+import fr.mbds.bank.customer.dto.CustomerDTO;
+import fr.mbds.bank.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,16 +20,12 @@ class CustomerController {
 
 
     @GetMapping("/customers")
-    public List<Customer> getCustomers() {
+    public List<CustomerDTO> getCustomers() {
         return customerService.getCustomers();
     }
 
     @GetMapping("/customer/{id}")
-    public Customer getCustomer(@PathVariable("id") Long id) {
+    public CustomerDTO getCustomer(@PathVariable("id") Long id) {
         return customerService.getCustomer(id);
     }
-
-
-
-
 }
