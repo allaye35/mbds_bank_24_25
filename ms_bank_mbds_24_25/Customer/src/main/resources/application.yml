@@ -1,16 +1,17 @@
-#src/resources/application.yml
 spring:
   application:
-  name: customer
+    name: customer
   datasource:
-  url: jdbc:h2:mem:devDb
+    url: jdbc:h2:mem:devDb
   h2:
-  console:
-  enabled: true
+    console:
+      enabled: true
+
 server:
   port: 8080
+
 management:
   endpoints:
     web:
       exposure:
-        include=*:
+        include: "*"
