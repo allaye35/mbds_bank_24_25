@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46fb3f65-2cb1-4ecf-874b-8e5a08d8adb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Config-repo/account.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config-repo/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Config-repo/customer.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/ConfigTestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SecurityManagementApp" beforeDir="false" afterPath="$PROJECT_DIR$/../SecurityManagementApp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Account/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Account/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Account/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Account/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,39 +72,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build Account.executor": "Run",
-    "Gradle.Build Config.executor": "Run",
-    "Gradle.Build customer.executor": "Run",
-    "Gradle.Build discovery.executor": "Run",
-    "Gradle.Build gateway.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.AccountApplication.executor": "Run",
-    "Spring Boot.ConfigApplication.executor": "Run",
-    "Spring Boot.CustomerApplication.executor": "Run",
-    "Spring Boot.DiscoveryApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/allay/Documents/java_Project_2025/ms_bank_mbds_24_25",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build Account.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Config.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build customer.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build discovery.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build gateway.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AccountApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.CustomerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DiscoveryApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/allay/Documents/java_Project_2025/ms_bank_mbds_24_25&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -190,7 +183,8 @@
       <workItem from="1741901585148" duration="437000" />
       <workItem from="1741902033746" duration="13137000" />
       <workItem from="1741964788295" duration="2094000" />
-      <workItem from="1741984322920" duration="7541000" />
+      <workItem from="1741984322920" duration="12361000" />
+      <workItem from="1742163986406" duration="2255000" />
     </task>
     <servers />
   </component>
