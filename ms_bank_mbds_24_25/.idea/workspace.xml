@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46fb3f65-2cb1-4ecf-874b-8e5a08d8adb9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/mbds/bank/customer/ConfigTestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SecurityManagementApp" beforeDir="false" afterPath="$PROJECT_DIR$/../SecurityManagementApp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -152,10 +151,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.ConfigApplication" />
       <item itemvalue="Spring Boot.AccountApplication" />
-      <item itemvalue="Spring Boot.DiscoveryApplication" />
+      <item itemvalue="Spring Boot.ConfigApplication" />
       <item itemvalue="Spring Boot.CustomerApplication" />
+      <item itemvalue="Spring Boot.DiscoveryApplication" />
       <item itemvalue="Spring Boot.GatewayApplication" />
     </list>
   </component>
@@ -184,7 +183,9 @@
       <workItem from="1741902033746" duration="13137000" />
       <workItem from="1741964788295" duration="2094000" />
       <workItem from="1741984322920" duration="12361000" />
-      <workItem from="1742163986406" duration="2255000" />
+      <workItem from="1742163986406" duration="2695000" />
+      <workItem from="1742195054166" duration="33000" />
+      <workItem from="1742195963817" duration="34000" />
     </task>
     <servers />
   </component>
